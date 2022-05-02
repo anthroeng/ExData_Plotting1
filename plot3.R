@@ -27,14 +27,17 @@ tidy_data <- data %>%
 tidy_data$Date_Time <- strptime(paste(tidy_data$Dates,tidy_data$Time), format = "%Y-%m-%d %H:%M:%S")
 
 # Plot the data
-plot(x = as.numeric(tidy_data$Date_Time), y = as.numeric(tidy_data$Global_active_power), type = "l",
-     ylab = "Global Active Power (kilowatts)",
+plot(x = as.numeric(tidy_data$Date_Time), y = as.numeric(tidy_data$Sub_metering_1), type = "l",
+     ylab = "Energy sub metering",
      xlab = "", # Makes the legend empty
      xaxt = "n", ) # Suppresses the x-axis values
+lines(x = as.numeric(tidy_data$Date_Time), as.numeric(tidy_data$Sub_metering_2), col = "red")
+lines(x = as.numeric(tidy_data$Date_Time), as.numeric(tidy_data$Sub_metering_3), col = "blue")
 axis(side = 1, at = c(as.numeric(tidy_data$Date_Time[1]),
                       as.numeric(tidy_data$Date_Time[1440]),
                       as.numeric(tidy_data$Date_Time[2880])),labels = c("Thu","Fri","Sat"))
+legend("topright", lty = 1, col = c("black", "red", "blue"), 
+       legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
 
 # Export plot to .png file
-dev.print(png, file = "plot2.png", width = 480, height = 480)
-
+dev.print(png, file = "plot3.png", width = 480, height = 480)
