@@ -54,7 +54,8 @@ with(tidy_data,
 with(tidy_data, lines(x = as.numeric(Date_Time), as.numeric(Sub_metering_2), col = "red"))
 with(tidy_data, lines(x = as.numeric(Date_Time), as.numeric(Sub_metering_3), col = "blue"))
     legend("topright", lty = 1, col = c("black", "red", "blue"), 
-           legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+           legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"),
+           bty = "n")
 axis(side = 1, at = c(as.numeric(tidy_data$Date_Time[1]),
                           as.numeric(tidy_data$Date_Time[1440]),
                           as.numeric(tidy_data$Date_Time[2880])),
